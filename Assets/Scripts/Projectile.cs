@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,7 +18,8 @@ public class Projectile : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update() {
+    void Update()
+    {
 
         if (target == null)
         {
@@ -29,25 +31,21 @@ public class Projectile : MonoBehaviour
             distanceToTarget = Vector3.Distance(target.transform.position, transform.position);
             if (distanceToTarget <= 0.5f)
             {
+                
+                Destroy(target);
+                scoe();
                 Destroy(gameObject);
-            }  
+            }
         }
 
     }
 
 
-    public void moveToTarget() 
+    public void moveToTarget()
     {
-        Vector3 dir = ((target.transform.position + target.transform.forward) - transform.position);
+        Vector3 dir = (target.transform.position - transform.position);
         rb.AddForce(dir * speed);
-        
+
     }
 
-    public void OnCollisionEnter(Collision other)
-    {
-        Destroy(target);
-        scoe();
-        Destroy(gameObject);
-        
-    }
 }

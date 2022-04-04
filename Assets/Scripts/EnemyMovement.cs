@@ -35,7 +35,7 @@ public class EnemyMovement : MonoBehaviour
     {
         if(waypointIndex >= Waypoint.waypoints.Length - 1)
         {
-            alivent();
+            
             Destroy(gameObject);
         }
         else
